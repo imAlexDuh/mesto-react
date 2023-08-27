@@ -12,29 +12,31 @@ function App() {
     const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
     const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
     const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
-    const [selectedCard, setSelectedCard] = React.useState("");
+    const [isImgPopupOpen, setIsImgPopupOpen] = React.useState(false);
+    const [selectedCard, setSelectedCard] = React.useState([]);
 
     function handleEditProfileClick() {
-        setEditProfilePopupOpen(!isEditProfilePopupOpen);
+        setEditProfilePopupOpen(true);
     }
 
     function handleAddPlaceClick() {
-        setAddPlacePopupOpen(!isAddPlacePopupOpen);
+        setAddPlacePopupOpen(true);
     }
 
     function handleEditAvatarClick() {
-        setEditAvatarPopupOpen(!isEditAvatarPopupOpen);
+        setEditAvatarPopupOpen(true);
     }
 
     function closeAllPopups() {
         setEditProfilePopupOpen(false);
         setAddPlacePopupOpen(false);
         setEditAvatarPopupOpen(false);
-        setSelectedCard("")
+        setIsImgPopupOpen(false);
     }
 
     function handleCardClick(card) {
-        setSelectedCard(card)
+        setIsImgPopupOpen(true);
+        setSelectedCard(card);
     }
 
     return (
@@ -53,10 +55,10 @@ function App() {
                 children={
                     <>
                         <input name="name" type="text" placeholder="Имя" id="profile-name"
-                            className="popup__text popup__text-name" required minlength="2" maxlength="40" />
+                            className="popup__text popup__text-name" required minLength="2" maxLength="40" />
                         <span className="popup__input-error" id="profile-name-error"></span>
                         <input name="about" type="text" placeholder="Вид деятельности" id="profile-info"
-                            className="popup__text popup__text-info" required minlength="2" maxlength="200" />
+                            className="popup__text popup__text-info" required minLength="2" maxLength="200" />
                         <span className="popup__input-error" id="profile-info-error"></span>
                     </>
                 }
@@ -70,7 +72,7 @@ function App() {
                 children={
                     <>
                         <input name="name" type="text" id="photo-name" placeholder="Название"
-                            className="popup__text popup__text-name" required minlength="2" maxlength="30" />
+                            className="popup__text popup__text-name" required minLength="2" maxLength="30" />
                         <span className="popup__input-error" id="photo-name-error"></span>
                         <input name="link" type="url" id="photo-link" placeholder="Ссылка на картинку"
                             className="popup__text popup__text-img" required />
@@ -97,6 +99,7 @@ function App() {
 
             <ImagePopup
                 card={selectedCard}
+                isOpen={isImgPopupOpen}
                 onClose={closeAllPopups}
             />
         </>
