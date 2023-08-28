@@ -3,7 +3,7 @@ import React from 'react';
 function ImagePopup(props) {
     console.log(props.card)
     return (
-        <div className={`popup ${props.isOpen ? 'popup_opened' : false}`} id="img-popup">
+        <div className={`popup ${props.isOpen ? 'popup_opened' : ''}`} id="img-popup">
             <div className="popup__img">
                 <img alt={props.card.name} src={props.card.link} className="popup__image" />
                 <p className="popup__image-name">{props.card.name}</p>
