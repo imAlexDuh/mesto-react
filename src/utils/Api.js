@@ -49,22 +49,22 @@ class Api {
     }).then(this._handleResponse)
   }
 
-  pressLike(data) {
-    return fetch(`${this._url}/cards/likes/${data._id}`, {
+  pressLike(id) {
+    return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'PUT',
       headers: this._headers
     }).then(this._handleResponse)
   }
 
-  unpressLike(data) {
-    return fetch(`${this._url}/cards/likes/${data._id}`, {
+  unpressLike(id) {
+    return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'DELETE',
       headers: this._headers
     }).then(this._handleResponse)
   }
 
-  delete(data) {
-    return fetch(`${this._url}/cards/${data._id}`, {
+  delete(id) {
+    return fetch(`${this._url}/cards/${id}`, {
       method: 'DELETE',
       headers: this._headers
     }).then(this._handleResponse)
@@ -79,6 +79,16 @@ class Api {
       })
     }).then(this._handleResponse)
   }
+
+  changeLikeCardStatus(id, isLiked) {
+    if (isLiked) {
+      return this.unpressLike(id);
+    } else {
+      return this.pressLike(id);
+    }
+  }
+
+
 }; 
 
 const api = new Api({
