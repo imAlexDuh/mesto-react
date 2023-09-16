@@ -73,8 +73,7 @@ function App() {
 
         api.changeLikeCardStatus(card._id, isLiked)
             .then((newCard) => {
-                const newCards = cards.map((currentCard) => currentCard._id === card._id ? newCard : currentCard);
-                setCardsData(newCards);
+                setCardsData(cards.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
             })
 
             .catch((err) => {
@@ -85,8 +84,7 @@ function App() {
     function handleCardDelete(card) {
         api.delete(card._id)
             .then(() => {
-                const newCards = cards.filter((elem) => elem !== card);
-                setCardsData(newCards);
+                setCardsData(cards.filter((elem) => elem !== card));
             })
 
             .catch((err) => {
