@@ -21,6 +21,11 @@ function AddPlacePopup(props) {
         });
     }
 
+    React.useEffect(() => {
+        setName("");
+        setLink("");
+    }, [props.isOpen]);
+
     return (
         <PopupWithForm
             name="add-popup"
@@ -29,7 +34,7 @@ function AddPlacePopup(props) {
             isOpen={props.isOpen}
             onClose={props.onClose}
             onSubmit={handleSubmit}
-             >
+        >
 
             <input onChange={handleChangeName} value={name} name="name" type="text" id="photo-name" placeholder="Название"
                 className="popup__text popup__text-name" required minLength="2" maxLength="30" />

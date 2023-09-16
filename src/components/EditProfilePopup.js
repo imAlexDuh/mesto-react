@@ -39,10 +39,10 @@ function EditProfilePopup(props) {
             onSubmit={handleSubmit}
         >
             <input name="name" type="text" placeholder="Имя" id="profile-name"
-                className="popup__text popup__text-name" required minLength="2" maxLength="40" onChange={changeName} />
+                className="popup__text popup__text-name" required minLength="2" maxLength="40" onChange={changeName} value={name} />
             <span className="popup__input-error" id="profile-name-error"></span>
             <input name="about" type="text" placeholder="Вид деятельности" id="profile-info"
-                className="popup__text popup__text-info" required minLength="2" maxLength="200" onChange={changeDescription} />
+                className="popup__text popup__text-info" required minLength="2" maxLength="200" onChange={changeDescription} value={description} />
             <span className="popup__input-error" id="profile-info-error"></span>
         </PopupWithForm>
     )

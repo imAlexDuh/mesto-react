@@ -2,7 +2,7 @@ import React from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 function Card(props) {
-    
+
     const currentUser = React.useContext(CurrentUserContext);
     const isLiked = props.card.likes.some(i => i._id === currentUser._id);
     const isOwn = props.card.owner._id === currentUser._id;
